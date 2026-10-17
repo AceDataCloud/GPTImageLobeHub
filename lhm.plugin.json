@@ -18,7 +18,7 @@
     {
       "name": "openai_generate_image",
       "title": null,
-      "description": "Generate images using OpenAI image models via AceDataCloud.\n\n    Creates AI-generated images from text descriptions using models like\n    gpt-image-1, dall-e-3, and nano-banana variants.\n\n    Use this when:\n    - You want to create an image from a text description\n    - You need AI-generated artwork or illustrations\n    - You want to generate product mockups or visual concepts\n\n    Returns:\n        JSON with a `task_id`. Generation runs asynchronously — poll\n        `openai_get_task` with that id until it reports `finished_at`, then\n        read the image URLs from its `response`. When `callback_url` is set the\n        result is POSTed there instead.\n    ",
+      "description": "Generate GPT Image images through Ace Data Cloud. Select an explicit supported GPT Image model and check its current price. Submit once, keep the returned task_id, and query openai_get_task using that value as id until terminal success or failure. No substitute model is selected.",
       "inputSchema": {
         "properties": {
           "prompt": {
@@ -229,7 +229,7 @@
     {
       "name": "openai_edit_image",
       "title": null,
-      "description": "Edit or modify existing images using OpenAI image models via AceDataCloud.\n\n    Applies AI-powered edits to existing images based on text descriptions.\n    Can modify, extend, or transform images while preserving desired elements.\n\n    Use this when:\n    - You want to modify an existing image\n    - You need to add, remove, or change elements in an image\n    - You want to apply a specific style or transformation to an image\n\n    Returns:\n        JSON with a `task_id`. Editing runs asynchronously — poll\n        `openai_get_task` with that id until it reports `finished_at`, then\n        read the image URLs from its `response`. When `callback_url` is set the\n        result is POSTed there instead.\n    ",
+      "description": "Edit GPT Image images through Ace Data Cloud. Select an explicit supported GPT Image model and check its current price. Submit once, keep the returned task_id, and query openai_get_task using that value as id until terminal success or failure. No substitute model is selected.",
       "inputSchema": {
         "properties": {
           "image": {
@@ -427,7 +427,7 @@
     {
       "name": "openai_list_image_models",
       "title": null,
-      "description": "List all available image generation and editing models.\n\n    Shows all models available for the images/generations and images/edits endpoints.\n\n    Returns:\n        Table of all image models with descriptions.\n    ",
+      "description": "List this adapter's GPT Image model IDs from the pinned dependency schema. No API generation request; model entitlement and prices must be checked separately.",
       "inputSchema": {
         "properties": {},
         "title": "openai_list_image_modelsArguments",

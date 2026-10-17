@@ -26,6 +26,13 @@ def focused_tools(tools: list[Tool]) -> list[Tool]:
             continue
         data = tool.model_dump(mode="json", exclude_none=True)
         if tool.name in IMAGE_TOOLS:
+            operation = "Generate" if tool.name == "openai_generate_image" else "Edit"
+            data["description"] = (
+                f"{operation} GPT Image images through Ace Data Cloud. Select an explicit supported "
+                "GPT Image model and check its current price. Submit once, keep the returned task_id, "
+                "and query openai_get_task using that value as id until terminal success or failure. "
+                "No substitute model is selected."
+            )
             schema = data["inputSchema"]
             model = copy.deepcopy(schema.get("properties", {}).get("model", {}))
             models = [value for value in model.get("enum", []) if value.startswith("gpt-image-")]
@@ -38,6 +45,11 @@ def focused_tools(tools: list[Tool]) -> list[Tool]:
             model["description"] = "GPT Image model ID supported by this installed Ace MCP."
             schema["properties"]["model"] = model
             schema["required"] = list(dict.fromkeys([*schema.get("required", []), "model"]))
+        elif tool.name == "openai_list_image_models":
+            data["description"] = (
+                "List this adapter's GPT Image model IDs from the pinned dependency schema. "
+                "No API generation request; model entitlement and prices must be checked separately."
+            )
         selected.append(Tool.model_validate(data))
     if {tool.name for tool in selected} != ALLOWED_TOOLS:
         raise ValueError("Pinned Ace MCP is missing a required image/query tool")
