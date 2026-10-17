@@ -45,7 +45,7 @@ async def test_preserves_same_task_id_and_upstream_pending_or_error_result():
     result = CallToolResult(content=[TextContent(type="text", text="pending; keep same task ID")], isError=False)
     upstream = AsyncMock()
     upstream.call_tool.return_value = result
-    assert await proxy_call(upstream, "openai_get_task", {"task_id": "existing-id"}) is result
-    upstream.call_tool.assert_awaited_once_with("openai_get_task", {"task_id": "existing-id"})
+    assert await proxy_call(upstream, "openai_get_task", {"id": "existing-id"}) is result
+    upstream.call_tool.assert_awaited_once_with("openai_get_task", {"id": "existing-id"})
     result.isError = True
-    assert (await proxy_call(upstream, "openai_get_task", {"task_id": "existing-id"})).isError
+    assert (await proxy_call(upstream, "openai_get_task", {"id": "existing-id"})).isError

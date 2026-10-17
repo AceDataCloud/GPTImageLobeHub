@@ -66,8 +66,8 @@ async def serve() -> None:
     environment = {
         key: value
         for key, value in os.environ.items()
-        if key in {"PATH", "HOME", "LANG", "TMPDIR", "SSL_CERT_FILE", "SSL_CERT_DIR"}
-        or key.startswith(("ACEDATACLOUD_", "OPENAI_"))
+        if key in {"PATH", "HOME", "LANG", "TMPDIR", "SSL_CERT_FILE", "SSL_CERT_DIR",
+                   "ACEDATACLOUD_API_TOKEN", "ACEDATACLOUD_API_BASE_URL", "OPENAI_REQUEST_TIMEOUT"}
     }
     token = environment.get("ACEDATACLOUD_API_TOKEN")
     if not token:
