@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "gpt-image-by-ace": {
+      "type": "stdio",
+      "command": "gpt-image-lobehub",
+      "args": [],
+      "env": {
+        "ACEDATACLOUD_API_TOKEN": "YOUR_API_TOKEN"
+      }
+    }
+  }
+}
