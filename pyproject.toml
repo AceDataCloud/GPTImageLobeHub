@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.21,<1.30", "editables>=0.5"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gpt-image-lobehub"
+version = "0.1.0"
+description = "GPT Image by Ace Data Cloud for LobeHub: a launcher for the shared GPT Image MCP profile"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["mcp>=1.26,<2", "mcp-openai-pro==2026.10.18.4"]
+readme = "README.md"
+authors = [{name = "Ace Data Cloud", email = "support@acedata.cloud"}]
+
+[project.scripts]
+gpt-image-lobehub = "gpt_image_lobehub:main"
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[project.urls]
+Repository = "https://github.com/AceDataCloud/GPTImageLobeHub"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gpt_image_lobehub"]
