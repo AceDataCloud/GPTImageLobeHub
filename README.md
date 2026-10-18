@@ -12,7 +12,7 @@ For local review, install this repository with `pip install .`, then use `instal
 
 ## Tagged installation and publication
 
-The immutable [GitHub release v0.1.0](https://github.com/AceDataCloud/GPTImageLobeHub/releases/tag/v0.1.0) is the package distribution path while PyPI project creation is subject to the existing publisher quota. Check the release assets and SHA256SUMS before using [install-stdio.json](install-stdio.json). It uses uvx with the exact tagged wheel URL. PyPI availability and LobeHub marketplace publication are separate stages; the focused marketplace entry remains pending.
+The immutable [GitHub release v0.1.1](https://github.com/AceDataCloud/GPTImageLobeHub/releases/tag/v0.1.1) is the package distribution path while PyPI project creation is subject to the existing publisher quota. Check the release assets and SHA256SUMS before using [install-stdio.json](install-stdio.json). It uses uvx with the exact tagged wheel URL. PyPI availability and LobeHub marketplace publication are separate stages; the focused marketplace entry remains pending.
 
 Maintainers: a v-prefixed version tag runs tests/build/twine validation and uploads the wheel, sdist and SHA256SUMS to GitHub Releases. The Release workflow has a separate explicit PyPI dispatch using the existing organization publisher; do not retry while its project-creation quota is exhausted or switch identities to bypass it.
 

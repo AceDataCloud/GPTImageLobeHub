@@ -5,7 +5,7 @@
       "command": "uvx",
       "args": [
         "--from",
-        "https://github.com/AceDataCloud/GPTImageLobeHub/releases/download/v0.1.0/gpt_image_lobehub-0.1.0-py3-none-any.whl",
+        "https://github.com/AceDataCloud/GPTImageLobeHub/releases/download/v0.1.1/gpt_image_lobehub-0.1.1-py3-none-any.whl",
         "gpt-image-lobehub"
       ],
       "env": {

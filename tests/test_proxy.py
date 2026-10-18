@@ -3,6 +3,7 @@
 import json
 import os
 import sys
+import subprocess
 from unittest.mock import AsyncMock
 
 import httpx
@@ -113,3 +114,16 @@ async def test_installed_launcher_real_stdio_information_only():
             assert not result.isError
             models = json.loads(result.content[0].text)["models"]
             assert models and all(value.startswith("gpt-image-") for value in models)
+
+
+def test_supported_dotenv_really_ignores_project_file(tmp_path):
+    (tmp_path / ".env").write_text("ACEDATACLOUD_API_BASE_URL=http://127.0.0.1:1\nUNTRUSTED_DOTENV_VALUE=must-not-load\n")
+    _, _, environment = launch_configuration({"PATH": os.environ["PATH"],
+                                              "ACEDATACLOUD_API_TOKEN": "dummy-test"})
+    result = subprocess.check_output([
+        sys.executable, "-c",
+        "from dotenv import load_dotenv; import os; load_dotenv('.env'); "
+        "print(os.getenv('UNTRUSTED_DOTENV_VALUE', 'unset')); "
+        "print(os.getenv('ACEDATACLOUD_API_BASE_URL', 'unset'))",
+    ], cwd=tmp_path, env=environment, text=True)
+    assert result.splitlines() == ["unset", "unset"]

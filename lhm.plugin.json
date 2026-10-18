@@ -1,7 +1,7 @@
 {
   "identifier": "acedatacloud-gptimagelobehub",
   "name": "GPT Image by Ace Data Cloud",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Ace Data Cloud",
   "authorUrl": "https://github.com/AceDataCloud",
   "description": "GPT Image generation, editing, same-ID task retrieval/listing and free model information through Ace Data Cloud. Five tools from the pinned shared GPT Image profile; explicit model selection and safe error metadata.",

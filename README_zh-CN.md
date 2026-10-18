@@ -6,7 +6,7 @@
 
 ## 正式版本安装与发布
 
-PyPI 项目创建受现有发布者配额限制时，使用不可变的 [GitHub v0.1.0 正式产物](https://github.com/AceDataCloud/GPTImageLobeHub/releases/tag/v0.1.0)。先核对资产和 SHA256SUMS；[install-stdio.json](install-stdio.json) 使用 uvx 和精确版本 wheel URL。PyPI、GitHub Release 与 LobeHub 收录分别验证，当前独立市场条目仍待发布。
+PyPI 项目创建受现有发布者配额限制时，使用不可变的 [GitHub v0.1.1 正式产物](https://github.com/AceDataCloud/GPTImageLobeHub/releases/tag/v0.1.1)。先核对资产和 SHA256SUMS；[install-stdio.json](install-stdio.json) 使用 uvx 和精确版本 wheel URL。PyPI、GitHub Release 与 LobeHub 收录分别验证，当前独立市场条目仍待发布。
 
 维护者：v 版本 tag 触发测试、build、twine 校验并上传 wheel/sdist/SHA256SUMS。Release workflow 的 PyPI 发布单独显式 dispatch，使用既有组织 publisher；配额用尽时不重试或换身份绕过。
 

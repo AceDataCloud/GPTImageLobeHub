@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gpt-image-lobehub"
-version = "0.1.0"
+version = "0.1.1"
 description = "GPT Image by Ace Data Cloud for LobeHub: a launcher for the shared GPT Image MCP profile"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-dependencies = ["mcp>=1.26,<2", "mcp-openai-pro==2026.10.18.4"]
+dependencies = ["mcp>=1.26,<2", "mcp-openai-pro==2026.10.18.4", "python-dotenv>=1.2.4,<2"]
 readme = "README.md"
 authors = [{name = "Ace Data Cloud", email = "support@acedata.cloud"}]
 
