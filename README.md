@@ -6,9 +6,15 @@ GPT Image generation and editing, provided by **Ace Data Cloud**. This is an Ace
 
 > Publication status (2026-10-18): **new focused adapter, not published to PyPI or LobeHub yet**. The planned identifier is `acedatacloud-gptimagelobehub`. This is a separate image-only tool surface, not a duplicate copy of OpenAIMCP. The existing broad [OpenAIMCP card](https://lobehub.com/mcp/acedatacloud-openaimcp) remains a fallback until this independent entry is published. Source installation is a developer/manual path, not normal marketplace installation.
 
-The adapter reuses pinned `mcp-openai-pro==2026.10.17.0` as its subprocess. It forwards only image generation/editing and exact task lookup, plus a local schema-derived image-model guide. GPT Image IDs are the only allowed generation models. It never changes price tiers or silently switches models, and passes upstream results/errors/task IDs through unchanged.
+The launcher executes the pinned `mcp-openai-pro==2026.10.18.4 --profile gpt-image --transport stdio` directly. The shared source owns all five tool schemas, explicit-model policy, safe error metadata and task formatting; this repository does not copy that implementation. Tools are `gpt_image_generate`, `gpt_image_edit`, `gpt_image_get_task`, `gpt_image_list_tasks`, and `gpt_image_list_models`. It forwards only image generation/editing and exact task lookup, plus a local schema-derived image-model guide and task-list retrieval. GPT Image IDs are the only allowed generation models. It never changes price tiers or silently switches models, and passes upstream results/errors/task IDs through unchanged.
 
 For local review, install this repository with `pip install .`, then use `install-stdio.json` with `gpt-image-lobehub`. This adapter is STDIO/desktop only; it has no deployed public HTTP endpoint.
+
+## Tagged installation and publication
+
+The immutable [GitHub release v0.1.0](https://github.com/AceDataCloud/GPTImageLobeHub/releases/tag/v0.1.0) is the package distribution path while PyPI project creation is subject to the existing publisher quota. Check the release assets and SHA256SUMS before using [install-stdio.json](install-stdio.json). It uses uvx with the exact tagged wheel URL. PyPI availability and LobeHub marketplace publication are separate stages; the focused marketplace entry remains pending.
+
+Maintainers: a v-prefixed version tag runs tests/build/twine validation and uploads the wheel, sdist and SHA256SUMS to GitHub Releases. The Release workflow has a separate explicit PyPI dispatch using the existing organization publisher; do not retry while its project-creation quota is exhausted or switch identities to bypass it.
 
 ## 1. Install the service
 
@@ -40,9 +46,9 @@ For this STDIO adapter, enter the raw token in the connector environment variabl
 
 ## 4. First use and task completion
 
-Call `openai_list_image_models` with no arguments. It returns the pinned upstream schema's GPT Image IDs and makes no generation request. Starting a chat to ask an Agent to run it may still charge the chat model; use a direct tool-test surface if available.
+Call `gpt_image_list_models` with no arguments. It returns the pinned upstream schema's GPT Image IDs and makes no generation request. Starting a chat to ask an Agent to run it may still charge the chat model; use a direct tool-test surface if available.
 
-Both generation and editing require an explicit GPT Image model; the broader dependency's DALL-E edit default is deliberately not inherited. For generation, explicitly select a model supported by the installed schema, confirm current pricing and permissions, and submit once. Save the returned task ID and query `openai_get_task` with that **same ID** until the response explicitly reports terminal success or failure. Pending/preview media is not final success. Open the final result URL only after terminal success; keep task and usage records to verify one charge. No paid generation was run to author this directory.
+Both generation and editing require an explicit GPT Image model; the broader dependency's DALL-E edit default is deliberately not inherited. For generation, explicitly select a model supported by the installed schema, confirm current pricing and permissions, and submit once. Save the returned task ID and query `gpt_image_get_task` with that **same ID** until the response explicitly reports terminal success or failure. Pending/preview media is not final success. Open the final result URL only after terminal success; keep task and usage records to verify one charge. No paid generation was run to author this directory.
 
 ## Troubleshooting
 
