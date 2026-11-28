@@ -22,7 +22,7 @@ PyPI 项目创建受现有发布者配额限制时，使用不可变的 [GitHub 
 
 ## 2. 登录并获取 Token
 
-登录或注册 [Ace → Applications（我的应用）](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=gpt-image_lobehub_readme_api_key)。如果还没有 **General application（通用应用）**，先初始化，再打开应用；确认 GPT Image 服务权限、余额和当前价格。复制已有服务 API Token，或在 **Manage Keys** 创建专用于 LobeHub 的 Key。不要填平台管理 Token 或原厂 Key。
+登录或注册 [Ace → Applications（我的应用）](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=gpt-image_lobehub_readme_api_key)。打开**通用应用**；确认 GPT Image 服务权限、余额和当前价格。复制已有服务 API Token，或在 **Manage Keys** 创建专用于 LobeHub 的 Key。不要填平台管理 Token 或原厂 Key。
 
 ![复制 API Token，Ace 真实历史截图；2026-10-18 引用](https://raw.githubusercontent.com/AceDataCloud/SunoDify/8d3d03570e73324220f111f7fe343da0792a8071/_assets/tutorial/get-api-key-en.png)
 
